@@ -44,7 +44,11 @@ private:
 public:
 	OSOperType(const Anope::string& moduleName, const Anope::string& creator)
 		: Module(moduleName, creator, THIRD)
-		, command(this) { }
+		, command(this)
+	{
+		if (IRCD->GetProtocolName().find("InspIRCd") == std::string::npos)
+			throw ModuleException("This module only works with InspIRCd");
+	}
 };
 
 MODULE_INIT(OSOperType)
