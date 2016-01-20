@@ -1,9 +1,5 @@
 // OperServ OperType (C) 2016 Peter "SaberUK" Powell
 
-// Configuration:
-//   module { name = "os_opertype" }
-//   command { service = "OperServ"; name = "OPERTYPE"; command = "operserv/opertype"; permission = "operserv/opertype"; }
-
 #include "module.h"
 
 class OSOperTypeCommand : public Command
