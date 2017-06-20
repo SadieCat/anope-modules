@@ -8,8 +8,8 @@ public:
 	OSOperTypeCommand(Module* creator)
 		: Command(creator, "operserv/opertype", 2, 2)
 	{
-		this->SetDesc("Sets the oper type of the specified user");
-		this->SetSyntax("\037nick\037 \037oper type\037");
+		this->SetDesc(_("Sets the oper type of the specified user"));
+		this->SetSyntax(_("\037nick\037 \037oper type\037"));
 	}
 
 	void Execute(CommandSource& source, const std::vector<Anope::string>& parameters) anope_override
@@ -24,14 +24,14 @@ public:
 
 		// Broadcast the SVSOPER to the remote server.
 		UplinkSocket::Message() << "SVSOPER " << target->GetUID() << " :" << parameters[1].replace_all_cs(" ", "_");
-		source.Reply("\002%s's\002 oper type has been set to \002%s\002.", target->nick.c_str(), parameters[1].c_str());
+		source.Reply(_("\002%s's\002 oper type has been set to \002%s\002."), target->nick.c_str(), parameters[1].c_str());
 	}
 
 	bool OnHelp(CommandSource& source, const Anope::string&) anope_override
 	{
 		this->SendSyntax(source);
 		source.Reply(" ");
-		source.Reply("Sets the oper type of the specified user");
+		source.Reply(_("Sets the oper type of the specified user"));
 		return true;
 	}
 };
@@ -47,7 +47,7 @@ public:
 		, command(this)
 	{
 		if (IRCD->GetProtocolName().find("InspIRCd") == std::string::npos)
-			throw ModuleException("This module only works with InspIRCd");
+			throw ModuleException(_("This module only works with InspIRCd"));
 	}
 };
 
