@@ -1,4 +1,4 @@
-# OperServ OperType (C) 2016 Peter "SaberUK" Powell
+# SaberUK's Anope Modules (C) 2016-2017 Peter "SaberUK" Powell
 
 build_modules(${CMAKE_CURRENT_SOURCE_DIR})
 
