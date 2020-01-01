@@ -1,4 +1,5 @@
-// SaberUK's Anope Modules (C) 2016-2017 Peter "SaberUK" Powell
+// Sadie's Anope Modules (C) 2016-2020 Sadie Powell
+// SPDX-License-Identifier: GPL-2.0-only
 
 #include "module.h"
 

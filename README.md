@@ -2,15 +2,14 @@
 
 ## About
 
-This repository contains the Anope 2.0+ modules that I have written that are not sustantial enough
-to get their own repository.
+This repository contains the Anope 2.0+ modules that I have written that are not sustantial enough to get their own repository.
 
 ## Installation
 
 From the root of the Anope source:
 
 ```sh
-git clone https://github.com/SaberUK/anope-modules.git ./modules/third/saberuk
+git clone https://github.com/SadieCat/anope-modules.git ./modules/third/sadiecat
 ./Config -quick
 make -Cbuild install
 ```
