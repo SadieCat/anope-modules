@@ -24,7 +24,8 @@ public:
 		}
 
 		// Broadcast the SVSOPER to the remote server.
-		UplinkSocket::Message() << "SVSOPER " << target->GetUID() << " :" << parameters[1].replace_all_cs(" ", "_");
+		Anope::string opertype = (IRCD->owner->name == "inspircd20") ? parameters[1].replace_all_cs(" ", "_") : parameters[1];
+		UplinkSocket::Message() << "SVSOPER " << target->GetUID() << " :" << opertype;
 		source.Reply(_("\002%s's\002 oper type has been set to \002%s\002."), target->nick.c_str(), parameters[1].c_str());
 	}
 
