@@ -3,20 +3,21 @@
 
 #include "module.h"
 
-class OSOperTypeCommand : public Command
+class OSOperTypeCommand anope_final
+	: public Command
 {
 public:
-	OSOperTypeCommand(Module* creator)
+	OSOperTypeCommand(Module *creator)
 		: Command(creator, "operserv/opertype", 2, 2)
 	{
 		this->SetDesc(_("Sets the oper type of the specified user"));
 		this->SetSyntax(_("\037nick\037 \037oper type\037"));
 	}
 
-	void Execute(CommandSource& source, const std::vector<Anope::string>& parameters) anope_override
+	void Execute(CommandSource &source, const std::vector<Anope::string> &parameters) anope_override
 	{
 		// Ensure that the target user is online.
-		User* target;
+		User *target;
 		if (!(target = User::Find(parameters[0], true)))
 		{
 			source.Reply(NICK_X_NOT_IN_USE, parameters[0].c_str());
@@ -29,7 +30,7 @@ public:
 		source.Reply(_("\002%s's\002 oper type has been set to \002%s\002."), target->nick.c_str(), parameters[1].c_str());
 	}
 
-	bool OnHelp(CommandSource& source, const Anope::string&) anope_override
+	bool OnHelp(CommandSource &source, const Anope::string &subcommand) anope_override
 	{
 		this->SendSyntax(source);
 		source.Reply(" ");
@@ -38,14 +39,15 @@ public:
 	}
 };
 
-class OSOperType : public Module
+class OSOperType anope_final
+	: public Module
 {
 private:
 	OSOperTypeCommand command;
 
 public:
-	OSOperType(const Anope::string& moduleName, const Anope::string& creator)
-		: Module(moduleName, creator, THIRD)
+	OSOperType(const Anope::string &modname, const Anope::string &creator)
+		: Module(modname, creator, THIRD)
 		, command(this)
 	{
 		if (IRCD->GetProtocolName().find("InspIRCd") == std::string::npos)
